@@ -9,6 +9,7 @@ var _            = require('lodash'),
     logging      = require('../logging'),
     utils        = require('./utils'),
     i18n         = require('../i18n'),
+    getFavicon   = require('../utils/get-favicon'),
 
     docName      = 'settings',
     settings,
@@ -65,6 +66,7 @@ updateConfigCache = function () {
     config.set('theme:facebook', (settingsCache.facebook && settingsCache.facebook.value) || '');
     config.set('theme:timezone', (settingsCache.activeTimezone && settingsCache.activeTimezone.value) || config.get('theme').timezone);
     config.set('theme:url', config.get('url') ? config.get('url').replace(/\/$/, '') : '');
+    config.set('theme:favicon', (settingsCache.favicon && settingsCache.favicon.value) ? {type: 'upload', url: (settingsCache.favicon && settingsCache.favicon.value)} : getFavicon(settingsCache.activeTheme.value));
 
     _.each(labsValue, function (value, key) {
         config.set('labs:' + key, value);
