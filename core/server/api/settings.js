@@ -9,7 +9,11 @@ var _            = require('lodash'),
     logging      = require('../logging'),
     utils        = require('./utils'),
     i18n         = require('../i18n'),
+<<<<<<< 30cf309fe63ad1162b68c392e0c33841ab5a8ec9
     generalUtils = require('../utils'),
+=======
+    getFavicon   = require('../utils/get-favicon'),
+>>>>>>> ✨  Find favicon in Ghost
 
     docName      = 'settings',
     settings,
@@ -66,6 +70,7 @@ updateConfigCache = function () {
     config.set('theme:facebook', (settingsCache.facebook && settingsCache.facebook.value) || '');
     config.set('theme:timezone', (settingsCache.activeTimezone && settingsCache.activeTimezone.value) || config.get('theme').timezone);
     config.set('theme:url', config.get('url') ? generalUtils.url.urlJoin(config.get('url'), '/') : '');
+    config.set('theme:favicon', (settingsCache.favicon && settingsCache.favicon.value) ? {type: 'upload', url: (settingsCache.favicon && settingsCache.favicon.value)} : getFavicon(settingsCache.activeTheme.value));
 
     _.each(labsValue, function (value, key) {
         config.set('labs:' + key, value);

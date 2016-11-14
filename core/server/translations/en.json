@@ -126,6 +126,10 @@
                     "context": "Theme name: {name}",
                     "help": "Valid package.json will be required in future. Please see {url}"
                 }
+            },
+            "noFaviconFound": {
+                "message": "No favicon.png found in Ghost 'core/shared'",
+                "help": "Please make sure to upload a favicon in `General/Settings` or use one in your theme assets"
             }
         },
         "config": {
